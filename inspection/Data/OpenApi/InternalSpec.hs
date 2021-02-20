@@ -95,7 +95,12 @@ spec =
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/Pet"
+                                "type": "object",
+                                "required": [ "name" ],
+                                "properties": {
+                                    "name": { "type": "string" },
+                                    "age": { "type": "integer" }
+                                }
                             }
                         }
                     }
