@@ -84,45 +84,45 @@ spec =
 
         -- TODO: report to openapi3 team
         it "returns Just OpenApi even if the OpenAPI document has no components" $ do
---             let json = [here|
--- {
---     "openapi": "3.0.0",
---     "info": { "title": "info example", "version": "1.0.0" },
---     "paths": {
---         "/pets": {
---             "post": {
---                 "requestBody": {
---                     "content": {
---                         "application/json": {
---                             "schema": {
---                                 "type": "object",
---                                 "required": [ "name" ],
---                                 "properties": {
---                                     "name": { "type": "string" },
---                                     "age": { "type": "integer" }
---                                 }
---                             }
---                         }
---                     }
---                 },
---                 "responses": { "default": { "description": "response example" } }
---             }
---         }
---     }
--- }
--- |]
-            -- decode' json `shouldSatisfy` isJust
             pending
+            let json = [here|
+{
+    "openapi": "3.0.0",
+    "info": { "title": "info example", "version": "1.0.0" },
+    "paths": {
+        "/pets": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [ "name" ],
+                                "properties": {
+                                    "name": { "type": "string" },
+                                    "age": { "type": "integer" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": { "default": { "description": "response example" } }
+            }
+        }
+    }
+}
+|]
+            decode' json `shouldSatisfy` isJust
 
         -- TODO: report to openapi3 team
         it "returns Nothing if the OpenAPI document has no Path objects" $ do
---             let json = [here|
--- {
---     "openapi": "3.0.0",
---     "info": { "title": "info example", "version": "1.0.0" },
---     "components": {
---     }
--- }
--- |]
-            -- decode' json `shouldBe` Nothing
             pending
+            let json = [here|
+{
+    "openapi": "3.0.0",
+    "info": { "title": "info example", "version": "1.0.0" },
+    "components": {
+    }
+}
+|]
+            decode' json `shouldBe` Nothing
