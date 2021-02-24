@@ -321,6 +321,7 @@ spec =
                     v = toValue [here| {"mstr": "def"} |]
                 validateJSON ds s v `shouldNotBe` []
 
+
 ---------------------------------------------------------------------------------------------------
         context "type: boolean" $ do
 
@@ -343,6 +344,7 @@ spec =
                 forM_ vs $ \v ->
                     -- TODO: エラーメッセージ改善
                     validateJSON ds s v `shouldBe` ["expected JSON value of type OpenApiBoolean"]
+
 
 ---------------------------------------------------------------------------------------------------
         context "type: array" $ do
