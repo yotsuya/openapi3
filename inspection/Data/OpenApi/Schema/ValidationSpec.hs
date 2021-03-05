@@ -130,8 +130,7 @@ spec =
                 let
                     (ds, s) = makeParams [here| {"mint": {"type": "integer", "minimum": 10, "exclusiveMinimum": true}} |]
                     v = toValue [here| {"mint": 10} |]
-                -- TODO: バグ報告 エラーメッセージの数字が欠落している
-                validateJSON ds s v `shouldBe` ["value 10.0 falls below minimum (should be >"]
+                validateJSON ds s v `shouldBe` ["value 10.0 falls below minimum (should be >10.0)"]
 
             it "returns [] if minimumと同じ&&exclusiveMinimum:false" $ do
                 let
@@ -155,8 +154,7 @@ spec =
                 let
                     (ds, s) = makeParams [here| {"mint": {"type": "integer", "maximum": 10, "exclusiveMaximum": true}} |]
                     v = toValue [here| {"mint": 11} |]
-                -- TODO: バグ報告 エラーメッセージの数字が欠落している
-                validateJSON ds s v `shouldBe` ["value 11.0 exceeds maximum (should be <"]
+                validateJSON ds s v `shouldBe` ["value 11.0 exceeds maximum (should be <10.0)"]
 
             it "returns [] if maximumと同じ&&exclusiveMaximum:false" $ do
                 let
